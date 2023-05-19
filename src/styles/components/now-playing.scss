@@ -13,7 +13,7 @@
   flex-flow: row nowrap;
   height: 100%;
   // padding: var(--spacing-m);
-  padding: 0%;
+  padding: 10%;
   margin: 0%;
   width: 100%;
 
@@ -33,8 +33,8 @@
   &__image {
     box-shadow: 1px 1px 16px -2px rgba(0, 0, 0, .3);
     // height: auto;
-    height: 75%;
-    width: 75%;
+    height: 10%;
+    width: 100%;
     object-fit: fill;
     // max-width: 60vw;
     // width: 100%;
