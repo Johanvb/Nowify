@@ -5,10 +5,10 @@
  *
  */
 .now-playing {
-  // background-color: var(--colour-background-now-playing);
-  background-color: black;
-  // color: var(--color-text-primary);
-  color:  rgb(240, 240, 240);
+   background-color: var(--colour-background-now-playing);
+  //background-color: black;
+   color: var(--color-text-primary);
+  //color:  rgb(240, 240, 240);
   display: flex;
   flex-flow: row nowrap;
   height: 100%;
@@ -33,8 +33,8 @@
   &__image {
     box-shadow: 1px 1px 16px -2px rgba(0, 0, 0, .3);
     // height: auto;
-    height: 100%;
-    width: 100%;
+    height: 75%;
+    width: 75%;
     object-fit: fill;
     // max-width: 60vw;
     // width: 100%;
@@ -70,7 +70,7 @@
     width: 100%;
     text-align: center;
     justify-content: center;
-  
+
   }
 
 }
