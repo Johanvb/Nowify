@@ -19,11 +19,12 @@
 
   &__cover,
   &__details {
-    padding: var(--spacing-l);
+  //  padding-left: var(--spacing-l);
+  //  padding-right:
     text-align: left;
-    width: 50%;
+    width: 100%;
     max-width: 960px;
-    max-height: 500px;
+    max-height: 600px;
     overflow: hidden;
   }
 
