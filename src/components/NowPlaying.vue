@@ -19,9 +19,9 @@
     </div>
     <div v-else class="now-playing" :class="getNowPlayingClass()">
       <h1 class="now-playing__idle-heading">{{ currentDay }}</h1>
-      <h3></h3>
+      <p></p>
       <h1 class="now-playing__idle-heading">{{ currentDate }}</h1>
-      <h3></h3>
+      <p></p>
       <h1 class="now-playing__idle-heading">{{ currentTime }}</h1>
     </div>
   </div>
