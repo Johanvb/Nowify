@@ -82,7 +82,9 @@ export default {
 
     getCurrentDay: function() {
       var d = new Date();
-      var weekday = d.toLocaleString("default", { weekday: "long" })
+      var str = d.toLocaleString("da-DK", { weekday: "long" })
+      var weekday = str.charAt(0).toUpperCase() + str.slice(1);
+  
       this.currentDay = weekday;
     },
 
