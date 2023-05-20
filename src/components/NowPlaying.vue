@@ -18,7 +18,11 @@
       </div>
     </div>
     <div v-else class="now-playing" :class="getNowPlayingClass()">
-      <h1 class="now-playing__idle-heading">{{ timestamp }}</h1>
+      <h1 class="now-playing__idle-heading">{{ currentDay }}</h1>
+      <h1></h1>
+      <h1 class="now-playing__idle-heading">{{ currentDate }}</h1>
+      <h1></h1>
+      <h1 class="now-playing__idle-heading">{{ currentTime }}</h1>
     </div>
   </div>
 </template>
@@ -44,7 +48,9 @@ export default {
       playerData: this.getEmptyPlayer(),
       colourPalette: '',
       swatches: [],
-      timestamp: "",
+      currentDay: "",
+      currentDate: "",
+      currentTime: "",
     }
   },
 
@@ -59,7 +65,9 @@ export default {
   },
   
   created() {
-                setInterval(this.getNow, 1000);
+                setInterval(this.getCurrentDay, 1000);
+                setInterval(this.getCurrentDate, 1000);
+                setInterval(this.getCurrentTime, 1000);
   },
 
   mounted() {
@@ -72,22 +80,33 @@ export default {
 
   methods: {
 
-    getNow: function() {
-                    let addZero = (el) => ((el.toString().length == 1) ? '0' : '') + el.toString();
+    getCurrentDay: function() {
+      var d = new Date();
+      var weekday = d.toLocaleString("default", { weekday: "long" })
+      this.timestamp = weekday;
+    },
 
-                    var d = new Date();
+    getCurrentDate: function() {
+      let addZero = (el) => ((el.toString().length == 1) ? '0' : '') + el.toString();
+      var d = new Date();
+      var year = d.getFullYear();
+      var month = d.getMonth() + 1; /*months are from 0 - 11 */
+      var day = d.getDate();
+      const currentTimestamp = year + "-" + addZero(month) + "-" + addZero(day) ;
+      this.timestamp = currentTimestamp;
+    },
 
-                    var year = d.getFullYear();
-                    var month = d.getMonth() + 1; /*months are from 0 - 11 */
-                    var day = d.getDate();
-                    var hour = d.getHours();
-                    var minute = d.getMinutes();
-                    var second = d.getSeconds();
+    getCurrentTime: function() {
+      let addZero = (el) => ((el.toString().length == 1) ? '0' : '') + el.toString();
+      var d = new Date();
 
-                    const currentTimestamp = year + "-" + addZero(month) + "-" + addZero(day) + " " + addZero(hour) + ":" + addZero(minute) + ":" + addZero(second);
+      var hour = d.getHours();
+      var minute = d.getMinutes();
+      var second = d.getSeconds();
+      const currentTimestamp = addZero(hour) + ":" + addZero(minute) + ":" + addZero(second);
+      this.timestamp = currentTimestamp;
+    },
 
-                    this.timestamp = currentTimestamp;
-                },
 
     /**
      * Make the network request to Spotify to
