@@ -18,11 +18,11 @@
       </div>
     </div>
     <div v-else class="now-playing" :class="getNowPlayingClass()">
-      <h1 class="now-playing__idle-heading">{{ currentDay }}</h1>
+      <h1 class="now-playing__idle-heading">DAY {{ currentDay }}</h1>
       <h1></h1>
-      <h1 class="now-playing__idle-heading">{{ currentDate }}</h1>
+      <h1 class="now-playing__idle-heading">DATE{{ currentDate }}</h1>
       <h1></h1>
-      <h1 class="now-playing__idle-heading">{{ currentTime }}</h1>
+      <h1 class="now-playing__idle-heading">TIME {{ currentTime }}</h1>
     </div>
   </div>
 </template>
@@ -83,7 +83,7 @@ export default {
     getCurrentDay: function() {
       var d = new Date();
       var weekday = d.toLocaleString("default", { weekday: "long" })
-      this.currentDay = "";
+      this.currentDay = weekday;
     },
 
     getCurrentDate: function() {
@@ -92,7 +92,7 @@ export default {
       var year = d.getFullYear();
       var month = d.getMonth() + 1; /*months are from 0 - 11 */
       var day = d.getDate();
-      const currentTimestamp = year + "-" + addZero(month) + "-" + addZero(day) ;
+      var currentTimestamp = year + "-" + addZero(month) + "-" + addZero(day) ;
       this.currentDate = currentTimestamp;
     },
 
@@ -103,7 +103,7 @@ export default {
       var hour = d.getHours();
       var minute = d.getMinutes();
       var second = d.getSeconds();
-      const currentTimestamp = addZero(hour) + ":" + addZero(minute) + ":" + addZero(second);
+      var currentTimestamp = addZero(hour) + ":" + addZero(minute) + ":" + addZero(second);
       this.currentTime = currentTimestamp;
     },
 
