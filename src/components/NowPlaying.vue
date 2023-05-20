@@ -81,9 +81,9 @@ export default {
   methods: {
 
     getCurrentDay: function() {
-      var d = new Date();
-      var weekday = d.toLocaleString("default", { weekday: "long" })
-      this.timestamp = weekday;
+      //var d = new Date();
+     // var weekday = d.toLocaleString("default", { weekday: "long" })
+      this.timestamp = "";
     },
 
     getCurrentDate: function() {
