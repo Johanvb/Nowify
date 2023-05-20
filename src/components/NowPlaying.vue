@@ -94,7 +94,7 @@ export default {
       var year = d.getFullYear();
       var month = d.getMonth() + 1; /*months are from 0 - 11 */
       var day = d.getDate();
-      var currentTimestamp = year + "-" + addZero(month) + "-" + addZero(day) ;
+      var currentTimestamp = addZero(day) + "-" + addZero(month) + "-" + year  ;
       this.currentDate = currentTimestamp;
     },
 
