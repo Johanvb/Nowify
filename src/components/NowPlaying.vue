@@ -18,7 +18,7 @@
       </div>
     </div>
     <div v-else class="now-playing" :class="getNowPlayingClass()">
-      <h1 class="now-playing__idle-heading">Nothing is playing</h1>
+      <h1 class="now-playing__idle-heading">{{ timestamp }}</h1>
     </div>
   </div>
 </template>
@@ -44,6 +44,7 @@ export default {
       playerData: this.getEmptyPlayer(),
       colourPalette: '',
       swatches: [],
+      timestamp: "",
     }
   },
 
@@ -56,6 +57,10 @@ export default {
       return this.player.trackArtists.join(', ')
     }
   },
+  
+  created() {
+                setInterval(this.getNow, 1000);
+  },
 
   mounted() {
     this.setDataInterval()
@@ -66,6 +71,15 @@ export default {
   },
 
   methods: {
+
+    getNow: function() {
+                    const today = new Date();
+                    const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+                    const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+                    const dateTime = date +' '+ time;
+                    this.timestamp = dateTime;
+                },
+
     /**
      * Make the network request to Spotify to
      * get the current played track.
