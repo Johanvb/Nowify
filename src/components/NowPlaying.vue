@@ -81,9 +81,9 @@ export default {
   methods: {
 
     getCurrentDay: function() {
-      //var d = new Date();
-     // var weekday = d.toLocaleString("default", { weekday: "long" })
-      this.timestamp = "";
+      var d = new Date();
+      var weekday = d.toLocaleString("default", { weekday: "long" })
+      this.currentDay = "";
     },
 
     getCurrentDate: function() {
@@ -93,7 +93,7 @@ export default {
       var month = d.getMonth() + 1; /*months are from 0 - 11 */
       var day = d.getDate();
       const currentTimestamp = year + "-" + addZero(month) + "-" + addZero(day) ;
-      this.timestamp = currentTimestamp;
+      this.currentDate = currentTimestamp;
     },
 
     getCurrentTime: function() {
@@ -104,7 +104,7 @@ export default {
       var minute = d.getMinutes();
       var second = d.getSeconds();
       const currentTimestamp = addZero(hour) + ":" + addZero(minute) + ":" + addZero(second);
-      this.timestamp = currentTimestamp;
+      this.currentTime = currentTimestamp;
     },
 
 
