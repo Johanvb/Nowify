@@ -73,11 +73,20 @@ export default {
   methods: {
 
     getNow: function() {
-                    const today = new Date();
-                    const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-                    const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-                    const dateTime = date +' '+ time;
-                    this.timestamp = dateTime;
+                    let addZero = (el) => ((el.toString().length == 1) ? '0' : '') + el.toString();
+
+                    var d = new Date();
+
+                    var year = d.getFullYear();
+                    var month = d.getMonth() + 1; /*months are from 0 - 11 */
+                    var day = d.getDate();
+                    var hour = d.getHours();
+                    var minute = d.getMinutes();
+                    var second = d.getSeconds();
+
+                    const currentTimestamp = year + "-" + addZero(month) + "-" + addZero(day) + " " + addZero(hour) + ":" + addZero(minute) + ":" + addZero(second);
+
+                    this.timestamp = currentTimestamp;
                 },
 
     /**
