@@ -18,11 +18,11 @@
       </div>
     </div>
     <div v-else class="now-playing" :class="getNowPlayingClass()">
-      <h1 class="now-playing__idle-heading">DAY {{ currentDay }}</h1>
-      <h1></h1>
-      <h1 class="now-playing__idle-heading">DATE{{ currentDate }}</h1>
-      <h1></h1>
-      <h1 class="now-playing__idle-heading">TIME {{ currentTime }}</h1>
+      <h1 class="now-playing__idle-heading">{{ currentDay }}</h1>
+      <h3></h3>
+      <h1 class="now-playing__idle-heading">{{ currentDate }}</h1>
+      <h3></h3>
+      <h1 class="now-playing__idle-heading">{{ currentTime }}</h1>
     </div>
   </div>
 </template>
