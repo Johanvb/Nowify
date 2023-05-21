@@ -20,6 +20,15 @@ h2 {
   text-shadow: 1px 1px 1px black;
 }
 
+h3 {
+  font-size: 1.4em;
+  font-weight: var(--font-weight-body);
+  letter-spacing: -0.5px;
+  margin: 0;
+  word-break: break-word;
+  text-shadow: 2px 2px 2px black;
+}
+
 p {
   font-size: 0.20em;
   line-height: 0.4;
