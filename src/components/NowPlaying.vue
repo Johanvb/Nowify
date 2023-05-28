@@ -6,9 +6,16 @@
       :class="getNowPlayingClass()"
     >
       <div class="now-playing__cover">
+        <div class="now-playing__vinylcontainer">
           <img src="vinyl.png"
           class="now-playing__vinyl"
           />
+          <img
+          :src="player.trackAlbum.image"
+          class="now-playing__vinylimage"
+        />
+        </div>
+       
         <img
           :src="player.trackAlbum.image"
           :alt="player.trackTitle"
