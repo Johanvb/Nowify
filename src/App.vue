@@ -49,7 +49,10 @@ export default {
         playing: false,
         trackArtists: [],
         trackTitle: '',
-        trackAlbum: []
+        trackAlbum: [],
+        trackDuration: 0,
+        trackProgress: 0,
+        currentTrackLengthMinutesSeconds: ''
       },
       storedId: ''
     }

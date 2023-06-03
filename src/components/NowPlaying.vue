@@ -27,6 +27,10 @@
       <div class="now-playing__details">
         <h1 class="now-playing__track" v-text="player.trackTitle"></h1>
         <h2 class="now-playing__artists" v-text="getTrackArtists"></h2>
+        <h1 class="now-playing__track"></h1>
+
+        <h2 class="now-playing__track">{{ currentTrackProgressMinutesSeconds }} / {{ currentTrackLengthMinutesSeconds }}</h2>
+
       </div>
     </div>
     <div v-else class="now-playing" :class="getNowPlayingClass()">
@@ -63,6 +67,8 @@ export default {
       currentDay: "",
       currentDate: "",
       currentTime: "",
+      currentTrackLengthMinutesSeconds: "",
+      currentTrackProgressMinutesSeconds: ""
     }
   },
 
@@ -80,6 +86,9 @@ export default {
                 setInterval(this.getCurrentDay, 1000);
                 setInterval(this.getCurrentDate, 1000);
                 setInterval(this.getCurrentTime, 1000);
+                setInterval(this.getTrackLengthMinutesSeconds, 1000);
+                setInterval(this.getCurrentlyPlayed, 1000);
+
   },
 
   mounted() {
@@ -121,6 +130,21 @@ export default {
       this.currentTime = currentTimestamp;
     },
 
+    millisToMinutesAndSeconds(millis) {
+        var minutes = Math.floor(millis / 60000);
+        var seconds = ((millis % 60000) / 1000).toFixed(0);
+        return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+    },
+
+    getCurrentlyPlayed: function() {
+      this.currentTrackProgressMinutesSeconds = this.millisToMinutesAndSeconds(this.playerData.trackProgress);
+      this.playerData.trackProgress = this.playerData.trackProgress + 1000;
+
+    },
+
+    getTrackLengthMinutesSeconds: function() {
+        this.currentTrackLengthMinutesSeconds = this.millisToMinutesAndSeconds(this.playerData.trackDuration);
+    },
 
     /**
      * Make the network request to Spotify to
@@ -217,7 +241,11 @@ export default {
         trackAlbum: {},
         trackArtists: [],
         trackId: '',
-        trackTitle: ''
+        trackTitle: '',
+        trackDuration: 0,
+        trackProgress: 0,
+        currentTrackLengthMinutesSeconds: ''
+
       }
     },
 
@@ -276,6 +304,9 @@ export default {
         return
       }
 
+      this.currentTrackProgressMinutesSeconds = '';
+      this.currentTrackLengthMinutesSeconds = '';
+
       /**
        * Store the current active track.
        */
@@ -285,6 +316,8 @@ export default {
           artist => artist.name
         ),
         trackTitle: this.playerResponse.item.name,
+        trackProgress: this.playerResponse.progress_ms,
+        trackDuration: this.playerResponse.item.duration_ms,
         trackId: this.playerResponse.item.id,
         trackAlbum: {
           title: this.playerResponse.item.album.name,
