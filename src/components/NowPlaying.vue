@@ -5,6 +5,7 @@
       class="now-playing"
       :class="getNowPlayingClass()"
     >
+    
       <div class="now-playing__cover">
         <div class="now-playing__vinylcontainer">
           <img src="vinyl.png"
@@ -25,13 +26,16 @@
     
       </div>
       <div class="now-playing__details">
+        
         <h1 class="now-playing__track" v-text="player.trackTitle"></h1>
         <h2 class="now-playing__artists" v-text="getTrackArtists"></h2>
         <h1 class="now-playing__track"></h1>
 
         <h2 class="now-playing__track">{{ currentTrackProgressMinutesSeconds }} / {{ currentTrackLengthMinutesSeconds }}</h2>
-
       </div>
+      <div>
+  <vm-progress class="now-playing__progress" :percentage="30" strokeColor="purple"></vm-progress>
+ </div>
     </div>
     <div v-else class="now-playing" :class="getNowPlayingClass()">
       <h3 class="now-playing__idle-heading">{{ currentDay }}</h3>
@@ -40,6 +44,7 @@
       <h3> </h3>
       <h3 class="now-playing__idle-heading">{{ currentTime }}</h3>
     </div>
+   
   </div>
 </template>
 
@@ -186,7 +191,11 @@ export default {
         }
 
         data = await response.json()
-        this.playerResponse = data
+        this.playerResponse = data;
+        this.playerData.trackProgress = this.playerResponse.progress_ms;
+        this.playerData.trackDuration = this.playerResponse.item.duration_ms;
+        console.log("Updated")
+        
       } catch (error) {
         this.handleExpiredToken()
 
