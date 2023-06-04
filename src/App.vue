@@ -52,7 +52,9 @@ export default {
         trackAlbum: [],
         trackDuration: 0,
         trackProgress: 0,
-        currentTrackLengthMinutesSeconds: ''
+        currentTrackLengthMinutesSeconds: '',
+        currentTrackProgressMinutesSeconds: ''
+
       },
       storedId: ''
     }

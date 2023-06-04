@@ -7,7 +7,7 @@
     >
     
       <div class="now-playing__cover">
-        <div class="now-playing__vinylcontainer">
+        <!-- <div class="now-playing__vinylcontainer">
           <img src="vinyl.png"
           class="now-playing__vinyl"
           />
@@ -15,7 +15,7 @@
           :src="player.trackAlbum.image"
           class="now-playing__vinylimage"
         />
-        </div>
+        </div> -->
        
         <img
           :src="player.trackAlbum.image"
@@ -28,14 +28,17 @@
       <div class="now-playing__details">
         
         <h1 class="now-playing__track" v-text="player.trackTitle"></h1>
+        <p class="now-playing__track" v-text="player.trackAlbum.title"></p>
         <h2 class="now-playing__artists" v-text="getTrackArtists"></h2>
         <h1 class="now-playing__track"></h1>
 
-        <h2 class="now-playing__track">{{ currentTrackProgressMinutesSeconds }} / {{ currentTrackLengthMinutesSeconds }}</h2>
       </div>
       <div>
-  <vm-progress class="now-playing__progress" :percentage="30" strokeColor="purple"></vm-progress>
- </div>
+  <!-- <vm-progress class="now-playing__progress" :percentage="30" :stroke-width="35" :show-text="false"  v-bind:stroke-color="this.colourPalette.text"></vm-progress> -->
+  <vm-progress class="now-playing__progress" v-bind:percentage="currentTrackProgressPercentage" :stroke-width="20" :show-text="false" stroke-color="black"></vm-progress>
+  <p class="now-playing__progresstext">{{ currentTrackProgressMinutesSeconds }} / {{ currentTrackLengthMinutesSeconds }}</p>
+
+</div>
     </div>
     <div v-else class="now-playing" :class="getNowPlayingClass()">
       <h3 class="now-playing__idle-heading">{{ currentDay }}</h3>
@@ -73,7 +76,8 @@ export default {
       currentDate: "",
       currentTime: "",
       currentTrackLengthMinutesSeconds: "",
-      currentTrackProgressMinutesSeconds: ""
+      currentTrackProgressMinutesSeconds: "",
+      currentTrackProgressPercentage: 0
     }
   },
 
@@ -144,7 +148,8 @@ export default {
     getCurrentlyPlayed: function() {
       this.currentTrackProgressMinutesSeconds = this.millisToMinutesAndSeconds(this.playerData.trackProgress);
       this.playerData.trackProgress = this.playerData.trackProgress + 1000;
-
+      this.currentTrackProgressPercentage = (this.playerData.trackProgress / this.playerData.trackDuration)*100.0;
+//console.log(this.currentTrackProgressPercentage);
     },
 
     getTrackLengthMinutesSeconds: function() {
@@ -194,7 +199,7 @@ export default {
         this.playerResponse = data;
         this.playerData.trackProgress = this.playerResponse.progress_ms;
         this.playerData.trackDuration = this.playerResponse.item.duration_ms;
-        console.log("Updated")
+     //   console.log("Updated")
         
       } catch (error) {
         this.handleExpiredToken()
@@ -315,6 +320,8 @@ export default {
 
       this.currentTrackProgressMinutesSeconds = '';
       this.currentTrackLengthMinutesSeconds = '';
+      this.currentTrackProgressPercentage = 0;
+
 
       /**
        * Store the current active track.
