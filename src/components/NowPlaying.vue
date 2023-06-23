@@ -1,29 +1,62 @@
 <template>
   <div id="app">
     <div
-      v-if="player.playing"
+      v-if="player.playing && player.playingDisplayMode==0"
       class="now-playing"
       :class="getNowPlayingClass()"
     >
+    <img class="now-playing__vinylcontainer_background" :src="player.trackAlbum.image">
       <div class="now-playing__cover">
+          
         <img
           :src="player.trackAlbum.image"
           :alt="player.trackTitle"
           class="now-playing__image"
         />
+        
       </div>
-      <div class="now-playing__details">
+      <div class="now-playing__details" >
+        
         <h1 class="now-playing__track" v-text="player.trackTitle"></h1>
+        <h3 class="now-playing__track" v-text="player.trackAlbum.title"></h3>
         <h2 class="now-playing__artists" v-text="getTrackArtists"></h2>
+        <h1 class="now-playing__track"></h1>
+
       </div>
+      <div>
+  <!-- <vm-progress class="now-playing__progress" :percentage="30" :stroke-width="35" :show-text="false"  v-bind:stroke-color="this.colourPalette.text"></vm-progress> -->
+  <vm-progress class="now-playing__progress" v-bind:percentage="currentTrackProgressPercentage" :stroke-width="20" :show-text="false" stroke-color="black"></vm-progress>
+  <p class="now-playing__progresstext">{{ currentTrackProgressMinutesSeconds }} / {{ currentTrackLengthMinutesSeconds }}</p>
+
+
+
+</div>
+
     </div>
+    <div v-else-if="player.playing && player.playingDisplayMode==1"
+      class="now-playing"
+      :class="getNowPlayingClass()">
+      <img class="now-playing__vinylcontainer_background" :src="player.trackAlbum.image">
+    <div class="now-playing__vinylcontainer">
+          <img src="vinyl.png"
+          class="now-playing__vinyl"
+          />
+          <img
+          :src="player.trackAlbum.image"
+          class="now-playing__vinylimage"
+        />
+        </div>
+        <vm-progress class="now-playing__progress" v-bind:percentage="currentTrackProgressPercentage" :stroke-width="20" :show-text="false" stroke-color="black"></vm-progress>
+  <p class="now-playing__progresstext">{{ currentTrackProgressMinutesSeconds }} / {{ currentTrackLengthMinutesSeconds }}</p>
+  </div>
     <div v-else class="now-playing" :class="getNowPlayingClass()">
-      <h3 class="now-playing__idle-heading">{{ currentDay }}</h3>
-      <h3> </h3>
-      <h3 class="now-playing__idle-heading">{{ currentDate }}</h3>
-      <h3> </h3>
-      <h3 class="now-playing__idle-heading">{{ currentTime }}</h3>
+      <h4 class="now-playing__idle-heading">{{ currentDay }}</h4>
+     
+      <h4 class="now-playing__idle-heading">{{ currentDate }}</h4>
+  
+      <h4 class="now-playing__idle-heading">{{ currentTime }}</h4>
     </div>
+   
   </div>
 </template>
 
@@ -51,6 +84,9 @@ export default {
       currentDay: "",
       currentDate: "",
       currentTime: "",
+      currentTrackLengthMinutesSeconds: "",
+      currentTrackProgressMinutesSeconds: "",
+      currentTrackProgressPercentage: 0
     }
   },
 
@@ -68,6 +104,9 @@ export default {
                 setInterval(this.getCurrentDay, 1000);
                 setInterval(this.getCurrentDate, 1000);
                 setInterval(this.getCurrentTime, 1000);
+                setInterval(this.getTrackLengthMinutesSeconds, 1000);
+                setInterval(this.getCurrentlyPlayed, 1000);
+
   },
 
   mounted() {
@@ -109,6 +148,22 @@ export default {
       this.currentTime = currentTimestamp;
     },
 
+    millisToMinutesAndSeconds(millis) {
+        var minutes = Math.floor(millis / 60000);
+        var seconds = ((millis % 60000) / 1000).toFixed(0);
+        return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+    },
+
+    getCurrentlyPlayed: function() {
+      this.currentTrackProgressMinutesSeconds = this.millisToMinutesAndSeconds(this.playerData.trackProgress);
+      this.playerData.trackProgress = this.playerData.trackProgress + 1000;
+      this.currentTrackProgressPercentage = (this.playerData.trackProgress / this.playerData.trackDuration)*100.0;
+//console.log(this.currentTrackProgressPercentage);
+    },
+
+    getTrackLengthMinutesSeconds: function() {
+        this.currentTrackLengthMinutesSeconds = this.millisToMinutesAndSeconds(this.playerData.trackDuration);
+    },
 
     /**
      * Make the network request to Spotify to
@@ -150,7 +205,11 @@ export default {
         }
 
         data = await response.json()
-        this.playerResponse = data
+        this.playerResponse = data;
+        this.playerData.trackProgress = this.playerResponse.progress_ms;
+        this.playerData.trackDuration = this.playerResponse.item.duration_ms;
+     //   console.log("Updated")
+        
       } catch (error) {
         this.handleExpiredToken()
 
@@ -169,6 +228,8 @@ export default {
      */
     getNowPlayingClass() {
       const playerClass = this.player.playing ? 'active' : 'idle'
+ 
+
       return `now-playing--${playerClass}`
     },
 
@@ -202,10 +263,16 @@ export default {
     getEmptyPlayer() {
       return {
         playing: false,
+        playingDisplayMode: 0,
+        playingInModeFor: 0,
         trackAlbum: {},
         trackArtists: [],
         trackId: '',
-        trackTitle: ''
+        trackTitle: '',
+        trackDuration: 0,
+        trackProgress: 0,
+        currentTrackLengthMinutesSeconds: ''
+
       }
     },
 
@@ -238,6 +305,21 @@ export default {
      * Handle newly updated Spotify Tracks.
      */
     handleNowPlaying() {
+
+      if(this.player.playing){
+        console.log("ost " + this.player.playingInModeFor);
+       this.player.playingInModeFor--;
+
+        if(this.player.playingInModeFor <=0){
+          if(this.player.playingDisplayMode == 0){
+            this.player.playingDisplayMode = 1;
+          }else{
+            this.player.playingDisplayMode = 0;
+          }
+          this.player.playingInModeFor = 20;
+        }
+      }
+
       if (
         this.playerResponse.error?.status === 401 ||
         this.playerResponse.error?.status === 400
@@ -264,15 +346,24 @@ export default {
         return
       }
 
+      this.currentTrackProgressMinutesSeconds = '';
+      this.currentTrackLengthMinutesSeconds = '';
+      this.currentTrackProgressPercentage = 0;
+
+
       /**
        * Store the current active track.
        */
       this.playerData = {
         playing: this.playerResponse.is_playing,
+        playingDisplayMode: 0, //0 normal, 1 vinyl
+        playingInModeFor: 10,
         trackArtists: this.playerResponse.item.artists.map(
           artist => artist.name
         ),
         trackTitle: this.playerResponse.item.name,
+        trackProgress: this.playerResponse.progress_ms,
+        trackDuration: this.playerResponse.item.duration_ms,
         trackId: this.playerResponse.item.id,
         trackAlbum: {
           title: this.playerResponse.item.album.name,

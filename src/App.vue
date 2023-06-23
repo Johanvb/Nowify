@@ -47,9 +47,16 @@ export default {
       },
       player: {
         playing: false,
+        playingDisplayMode: 0,
+        playingInModeFor: 120,
         trackArtists: [],
         trackTitle: '',
-        trackAlbum: []
+        trackAlbum: [],
+        trackDuration: 0,
+        trackProgress: 0,
+        currentTrackLengthMinutesSeconds: '',
+        currentTrackProgressMinutesSeconds: ''
+
       },
       storedId: ''
     }
