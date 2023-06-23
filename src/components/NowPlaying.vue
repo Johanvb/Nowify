@@ -307,7 +307,6 @@ export default {
     handleNowPlaying() {
 
       if(this.player.playing){
-        console.log("ost " + this.player.playingInModeFor);
        this.player.playingInModeFor--;
 
         if(this.player.playingInModeFor <=0){
