@@ -127,7 +127,9 @@
   }
 
   &__vinylcontainer_background{
-
+    max-width: 1920px;
+    max-height: 1280px;
+    overflow: hidden;
       position: absolute;
      width: 110%;
      background-position: center;
