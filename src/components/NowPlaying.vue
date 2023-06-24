@@ -33,13 +33,13 @@
 </div>
 
     </div>  
-    <div v-else-if="player.playing"
+    <div v-else-if="player.playing "
       class="now-playing"
       :class="getNowPlayingClass()">
       <img class="now-playing__vinylcontainer_background" :src="player.trackAlbum.image">
     <div class="now-playing__vinylcontainer">
           <img src="vinyl.png"
-          class="now-playing__vinyl"
+          class="now-playing__vinyl"  
           />
           <img
           :src="player.trackAlbum.image"
@@ -295,7 +295,7 @@ export default {
       //   this.colourPalette.text
       // )
 
-      // document.documentElement.style.setProperty(
+      // document.documentElement.style.setProperty(  
       //   '--colour-background-now-playing',
       //   this.colourPalette.background
       // )

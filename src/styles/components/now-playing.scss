@@ -93,7 +93,7 @@
     overflow: hidden;
   //  border-radius: 100%;
    
-   animation: rotating 25s linear infinite;
+   animation: rotating 35s steps(1000)  infinite; 
    transform: translateZ(0);
    clip-path: circle(49% at 50% 50%);
  
@@ -108,7 +108,7 @@
   clip-path: circle(49% at 50% 50%);
 
     position: absolute;
-    animation: rotating 25s linear infinite;
+    animation: rotating 35s steps(1000) infinite;
 
   }
 
@@ -140,7 +140,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     object-fit: cover;
-    filter:  brightness(40%);
+    filter: blur(5px) brightness(35%);
      
   }
   
