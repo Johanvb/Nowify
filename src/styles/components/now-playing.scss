@@ -121,28 +121,29 @@
   }
 
   //White dot in middle of vinyl
-  &__vinylcontainer:after{
-    content:"";
-      position: absolute;
-      padding: 15px;
-      background: grey;
-      border-radius: 50%;
-      top: 47.5%;
-      z-index:3;
-      left: 49.7%;
-      border: 1px solid black;
-  }
+  // &__vinylcontainer:after{
+  //   content:"";
+  //     position: absolute;
+  //     padding: 15px;
+  //     background: grey;
+  //     border-radius: 50%;
+  //     top: 47.5%;
+  //     z-index:3;
+  //     left: 49.7%;
+  //     border: 1px solid black;
+  // }
 
   &__vinylcontainer_background{
-    max-width: 110%;
-    width: 110%;
+    max-width: 100%;
+    
+    width: 100%;
     z-index:0;
-    overflow: hidden;
     position: absolute;
      background-position: center;
      background-repeat: no-repeat;
      background-size: cover;
-     filter: blur(10px) brightness(35%);
+      object-fit: cover;
+     filter:  brightness(40%);
      
   }
   
