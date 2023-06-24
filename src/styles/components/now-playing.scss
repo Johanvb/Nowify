@@ -14,7 +14,10 @@
   padding: 3%;
   margin: 0%;
   width: 100%;
-  
+  max-width: 1920px;
+  max-height: 1280px;
+  overflow: hidden;
+
   &__cover,
   &__details {
     padding-left: 5%;
@@ -96,7 +99,7 @@
     animation: rotating 20s linear infinite;
     border: 10px solid black;
     border-radius: 50%;
-  
+    
   }
   &__vinylimage {
     top: 30.5%;
@@ -120,20 +123,17 @@
       padding: 15px;
       background: grey;
       border-radius: 50%;
-      top: 48.5%;
+      top: 47.5%;
       z-index:3;
       left: 49.7%;
       border: 1px solid black;
   }
 
   &__vinylcontainer_background{
-    max-width: 1920px;
-    max-height: 1280px;
-    width: 1920px;
-    height: 1280px;
+    max-width: 110%;
+    width: 110%;
     overflow: hidden;
     position: absolute;
-     width: 100%;
      background-position: center;
      background-repeat: no-repeat;
      background-size: cover;
