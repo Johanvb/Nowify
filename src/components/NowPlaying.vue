@@ -32,7 +32,7 @@
 
 </div>
 
-    </div>
+    </div>  
     <div v-else-if="player.playing"
       class="now-playing"
       :class="getNowPlayingClass()">
@@ -290,15 +290,15 @@ export default {
      * Set the stylings of the app based on received colours.
      */
     setAppColours() {
-      document.documentElement.style.setProperty(
-        '--color-text-primary',
-        this.colourPalette.text
-      )
+      // document.documentElement.style.setProperty(
+      //   '--color-text-primary',
+      //   this.colourPalette.text
+      // )
 
-      document.documentElement.style.setProperty(
-        '--colour-background-now-playing',
-        this.colourPalette.background
-      )
+      // document.documentElement.style.setProperty(
+      //   '--colour-background-now-playing',
+      //   this.colourPalette.background
+      // )
     },
 
     /**
