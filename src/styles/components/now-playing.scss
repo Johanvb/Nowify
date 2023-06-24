@@ -92,22 +92,14 @@
     //border: 1px green solid;
     overflow: hidden;
   //  border-radius: 100%;
-    -webkit-animation: rotating 20s linear infinite;
-    -moz-animation: rotating 20s linear infinite;
-    -ms-animation: rotating 20s linear infinite;
-    -o-animation: rotating 20s linear infinite;
-    animation: rotating 20s linear infinite;
+    -webkit-animation: rotating 25s linear infinite;
+    -moz-animation: rotating 25s linear infinite;
+    -ms-animation: rotating 25s linear infinite;
+    -o-animation: rotating 25s linear infinite;
+    animation: rotating 25s linear infinite;
     border: 10px solid black;
     border-radius: 50%;
-    transform: translate3d(0,0,0);
-    -webkit-backface-visibility: hidden;
-    -webkit-perspective: 1000;
-    -webkit-transform: translate3d(0,0,0);
-    -webkit-transform: translateZ(0);
-    backface-visibility: hidden;
-    perspective: 1000;
-    transform: translate3d(0,0,0);
-    transform: translateZ(0);
+    
   }
   &__vinylimage {
     top: 30.5%;
@@ -117,19 +109,12 @@
     z-index:3;
     border-radius: 50%;
     position: absolute;
-    -webkit-animation: rotating 20s linear infinite;
-    -moz-animation: rotating 20s linear infinite;
-    -ms-animation: rotating 20s linear infinite;
-    -o-animation: rotating 20s linear infinite;
-    animation: rotating 20s linear infinite;
-    -webkit-backface-visibility: hidden;
-    -webkit-perspective: 1000;
-    -webkit-transform: translate3d(0,0,0);
-    -webkit-transform: translateZ(0);
-    backface-visibility: hidden;
-    perspective: 1000;
-    transform: translate3d(0,0,0);
-    transform: translateZ(0);
+    -webkit-animation: rotating 25s linear infinite;
+    -moz-animation: rotating 25s linear infinite;
+    -ms-animation: rotating 25s linear infinite;
+    -o-animation: rotating 25s linear infinite;
+    animation: rotating 25s linear infinite;
+    
   }
 
   &__vinylcontainer{
@@ -159,8 +144,8 @@
     background-repeat: no-repeat;
     background-size: cover;
     object-fit: cover;
-    filter: blur(5px) brightness(40%);
-    transform: translate3d(0,0,0);
+    filter:  brightness(40%);
+     
   }
   
 
