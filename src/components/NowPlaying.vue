@@ -38,13 +38,13 @@
       :class="getNowPlayingClass()">
       <img class="now-playing__vinylcontainer_background" :src="player.trackAlbum.image">
     <div class="now-playing__vinylcontainer">
-          <img src="vinyl.png"
+          <!-- <img src="vinyl.png"
           class="now-playing__vinyl"
-          />
-          <!-- <img
+          /> -->
+          <img
           :src="player.trackAlbum.image"
           class="now-playing__vinylimage"
-        /> -->
+        />
         </div>
         <vm-progress class="now-playing__progress" v-bind:percentage="currentTrackProgressPercentage" :stroke-width="20" :show-text="false" stroke-color="black"></vm-progress>
   <p class="now-playing__progresstext">{{ currentTrackProgressMinutesSeconds }} / {{ currentTrackLengthMinutesSeconds }}</p>
