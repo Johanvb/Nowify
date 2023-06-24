@@ -90,7 +90,7 @@
     width: 1000px;
     z-index:1;
     //border: 1px green solid;
-    overflow: visible;
+    overflow: hidden;
   //  border-radius: 100%;
     -webkit-animation: rotating 20s linear infinite;
     -moz-animation: rotating 20s linear infinite;
@@ -106,7 +106,7 @@
     left: 38%;
     height: 475px;
     width: 475px;
-    z-index:2;
+    z-index:3;
     border-radius: 50%;
     position: absolute;
     -webkit-animation: rotating 20s linear infinite;
@@ -116,7 +116,11 @@
     animation: rotating 20s linear infinite;
   }
 
-//White dot in middle of vinyl
+  &__vinylcontainer{
+    z-index: 1;
+  }
+
+  //White dot in middle of vinyl
   &__vinylcontainer:after{
     content:"";
       position: absolute;
@@ -132,6 +136,7 @@
   &__vinylcontainer_background{
     max-width: 110%;
     width: 110%;
+    z-index:0;
     overflow: hidden;
     position: absolute;
      background-position: center;

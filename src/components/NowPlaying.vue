@@ -36,7 +36,7 @@
     <div v-else-if="player.playing"
       class="now-playing"
       :class="getNowPlayingClass()">
-      <!-- <img class="now-playing__vinylcontainer_background" :src="player.trackAlbum.image"> -->
+      <img class="now-playing__vinylcontainer_background" :src="player.trackAlbum.image">
     <div class="now-playing__vinylcontainer">
           <img src="vinyl.png"
           class="now-playing__vinyl"
