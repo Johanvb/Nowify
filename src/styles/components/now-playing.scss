@@ -99,6 +99,7 @@
     animation: rotating 20s linear infinite;
     border: 10px solid black;
     border-radius: 50%;
+    transform: translate3d(0,0,0);
     
   }
   &__vinylimage {
@@ -114,6 +115,7 @@
     -ms-animation: rotating 20s linear infinite;
     -o-animation: rotating 20s linear infinite;
     animation: rotating 20s linear infinite;
+    transform: translate3d(0,0,0);
   }
 
   &__vinylcontainer{
