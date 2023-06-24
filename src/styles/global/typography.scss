@@ -8,7 +8,7 @@ h1 {
   letter-spacing: -1.25px;
   margin: 0 0 var(--spacing-m) 0;
   word-break: break-word;
-  text-shadow: 2px 2px 2px darkgrey;
+  text-shadow: 2px 2px 2px black;
 }
 
 h2 {
@@ -17,7 +17,7 @@ h2 {
   letter-spacing: -0.5px;
   margin: 0;
   word-break: break-word;
-  text-shadow: 1px 1px 1px darkgrey;
+  text-shadow: 2px 2px 2px black;
 }
 
 h3 {
@@ -26,7 +26,7 @@ h3 {
   letter-spacing: -1.25px;
   margin: 0 0 var(--spacing-m) 0;
   word-break: break-word;
-  text-shadow: 1.5px 1.5px 1.5px darkgrey;
+  text-shadow: 2px 2px 2px black;
 }
 
 h4 {
@@ -41,6 +41,6 @@ h4 {
 p {
   font-size: 1em;
   line-height: 0.4;
-  text-shadow: 1px 1px 1px darkgrey;
+  text-shadow: 1px 1px 1px black;
 
 }
