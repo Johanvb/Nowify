@@ -100,7 +100,14 @@
     border: 10px solid black;
     border-radius: 50%;
     transform: translate3d(0,0,0);
-    
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    -webkit-transform: translate3d(0,0,0);
+    -webkit-transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000;
+    transform: translate3d(0,0,0);
+    transform: translateZ(0);
   }
   &__vinylimage {
     top: 30.5%;
@@ -115,7 +122,14 @@
     -ms-animation: rotating 20s linear infinite;
     -o-animation: rotating 20s linear infinite;
     animation: rotating 20s linear infinite;
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    -webkit-transform: translate3d(0,0,0);
+    -webkit-transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000;
     transform: translate3d(0,0,0);
+    transform: translateZ(0);
   }
 
   &__vinylcontainer{
@@ -145,8 +159,8 @@
     background-repeat: no-repeat;
     background-size: cover;
     object-fit: cover;
-    filter:  brightness(40%);
-     
+    filter: blur(5px) brightness(40%);
+    transform: translate3d(0,0,0);
   }
   
 
