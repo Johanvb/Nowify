@@ -86,8 +86,8 @@
   }
 
   &__vinyl {
-    height: 1000px;
-    width: 1000px;
+    height: 100%;
+    width: 100%;
     z-index:1;
     //border: 1px green solid;
     overflow: hidden;
@@ -104,8 +104,8 @@
   &__vinylimage {
     top: 30.5%;
     left: 38%;
-    height: 475px;
-    width: 475px;
+    height: 225px;
+    width: 225px;
     z-index:3;
     border-radius: 50%;
     position: absolute;

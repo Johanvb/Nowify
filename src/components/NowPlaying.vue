@@ -38,9 +38,9 @@
       :class="getNowPlayingClass()">
       <img class="now-playing__vinylcontainer_background" :src="player.trackAlbum.image">
     <div class="now-playing__vinylcontainer">
-          <!-- <img src="vinyl.png"
+          <img src="vinyl.png"
           class="now-playing__vinyl"
-          /> -->
+          />
           <img
           :src="player.trackAlbum.image"
           class="now-playing__vinylimage"
