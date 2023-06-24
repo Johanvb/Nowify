@@ -79,21 +79,21 @@
     //opacity: 0.7;
     object-fit: fill;
     position: relative;
+    
   }
 
   &__vinyl {
-    height: 1075px;
-    width: 1075px;
-    top: 3%;
+    height: 1000px;
+    width: 1000px;
     z-index:1;
     //border: 1px green solid;
     overflow: visible;
   //  border-radius: 100%;
-    -webkit-animation: rotating 8s linear infinite;
-    -moz-animation: rotating 8s linear infinite;
-    -ms-animation: rotating 8s linear infinite;
-    -o-animation: rotating 8s linear infinite;
-    animation: rotating 8s linear infinite;
+    -webkit-animation: rotating 20s linear infinite;
+    -moz-animation: rotating 20s linear infinite;
+    -ms-animation: rotating 20s linear infinite;
+    -o-animation: rotating 20s linear infinite;
+    animation: rotating 20s linear infinite;
     border: 10px solid black;
     border-radius: 50%;
   
@@ -106,11 +106,11 @@
     z-index:2;
     border-radius: 50%;
     position: absolute;
-    -webkit-animation: rotating 8s linear infinite;
-    -moz-animation: rotating 8s linear infinite;
-    -ms-animation: rotating 8s linear infinite;
-    -o-animation: rotating 8s linear infinite;
-    animation: rotating 8s linear infinite;
+    -webkit-animation: rotating 20s linear infinite;
+    -moz-animation: rotating 20s linear infinite;
+    -ms-animation: rotating 20s linear infinite;
+    -o-animation: rotating 20s linear infinite;
+    animation: rotating 20s linear infinite;
   }
 
 //White dot in middle of vinyl
@@ -129,14 +129,15 @@
   &__vinylcontainer_background{
     max-width: 1920px;
     max-height: 1280px;
+    width: 1920px;
+    height: 1280px;
     overflow: hidden;
-      position: absolute;
-     width: 110%;
+    position: absolute;
+     width: 100%;
      background-position: center;
      background-repeat: no-repeat;
      background-size: cover;
-     -webkit-filter: blur(15px) brightness(35%);; /* Safari 6.0 - 9.0 */
-     filter: blur(15px) brightness(35%);
+     filter: blur(10px) brightness(35%);
      
   }
   
