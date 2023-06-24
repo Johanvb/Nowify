@@ -93,7 +93,7 @@
     overflow: hidden;
   //  border-radius: 100%;
    
-   animation: rotating 35s steps(800)  infinite; 
+   animation: rotating 20s steps(500)  infinite; 
    transform: translateZ(0);
    clip-path: circle(49% at 50% 50%);
  
@@ -108,7 +108,7 @@
     clip-path: circle(49% at 50% 50%);
 
     position: absolute;
-    animation: rotating 35s steps(800) infinite;
+    animation: rotating 20s steps(500) infinite;
 
   }
 
@@ -120,7 +120,7 @@
   //White dot in middle of vinyl
   // &__vinylcontainer:after{
   //   content:"";
-  //     position: absolute;
+  //     position: absolute;  
   //     padding: 15px;
   //     background: grey;
   //     border-radius: 50%;

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div
-      v-if="player.playing && player.playingDisplayMode==2"
+      v-if="player.playing && player.playingDisplayMode==0"
       class="now-playing"
       :class="getNowPlayingClass()"
     >
@@ -33,7 +33,7 @@
 </div>
 
     </div>  
-    <div v-else-if="player.playing "
+    <div v-else-if="player.playing && player.playingDisplayMode==1"
       class="now-playing"
       :class="getNowPlayingClass()">
       <img class="now-playing__vinylcontainer_background" :src="player.trackAlbum.image">
