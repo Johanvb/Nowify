@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div
-      v-if="player.playing && player.playingDisplayMode==0"
+      v-if="false && player.playing && player.playingDisplayMode==0"
       class="now-playing"
       :class="getNowPlayingClass()"
     >
@@ -20,12 +20,12 @@
         <h1 class="now-playing__track" v-text="player.trackTitle"></h1>
         <h3 class="now-playing__track" v-text="player.trackAlbum.title"></h3>
         <h2 class="now-playing__artists" v-text="getTrackArtists"></h2>
-        <h1 class="now-playing__track"></h1>
+     
 
       </div>
       <div>
   <!-- <vm-progress class="now-playing__progress" :percentage="30" :stroke-width="35" :show-text="false"  v-bind:stroke-color="this.colourPalette.text"></vm-progress> -->
-  <vm-progress class="now-playing__progress" v-bind:percentage="currentTrackProgressPercentage" :stroke-width="20" :show-text="false" stroke-color="black"></vm-progress>
+  <vm-progress class="now-playing__progress" v-bind:percentage="currentTrackProgressPercentage" :stroke-width="20" :show-text="false" stroke-color="black" track-color="#888888"></vm-progress>
   <p class="now-playing__progresstext">{{ currentTrackProgressMinutesSeconds }} / {{ currentTrackLengthMinutesSeconds }}</p>
 
 
@@ -33,7 +33,7 @@
 </div>
 
     </div>  
-    <div v-else-if="player.playing && player.playingDisplayMode==1"
+    <div v-else-if="player.playing"
       class="now-playing"
       :class="getNowPlayingClass()">
       <img class="now-playing__vinylcontainer_background" :src="player.trackAlbum.image">
@@ -41,15 +41,25 @@
           <img src="vinyl.png"
           class="now-playing__vinyl"  
           />
-          <img
+          <img  
           :src="player.trackAlbum.image"
           class="now-playing__vinylimage"
         />
         </div>
-        <vm-progress class="now-playing__progress" v-bind:percentage="currentTrackProgressPercentage" :stroke-width="20" :show-text="false" stroke-color="black"></vm-progress>
-  <p class="now-playing__progresstext">{{ currentTrackProgressMinutesSeconds }} / {{ currentTrackLengthMinutesSeconds }}</p>
+        <div class="now-playing__details_vinyl_upper" >  
+          <h2 class="now-playing__track" v-text="player.trackTitle"></h2>
+        </div>
+        <div class="now-playing__details_vinyl_lower" >  
+          <h2 class="now-playing__track" v-text="getTrackArtists"></h2>
+        </div>
+        <div class="now-playing__details_vinyl_right" >  
+          <p class="now-playing__progresstext">{{ currentTrackProgressMinutesSeconds }} / {{ currentTrackLengthMinutesSeconds }}</p>
+        </div>
+        <vm-progress class="now-playing__progress_vinyl" type="circle" v-bind:percentage="currentTrackProgressPercentage" :stroke-width="20" :show-text="false" width="990"  stroke-color="black" track-color="#888888" ></vm-progress>
   </div>
+  
     <div v-else class="now-playing" :class="getNowPlayingClass()">
+      <img class="now-playing__marble_background" src="marble.png">
       <h4 class="now-playing__idle-heading">{{ currentDay }}</h4>
      
       <h4 class="now-playing__idle-heading">{{ currentDate }}</h4>
@@ -143,8 +153,8 @@ export default {
 
       var hour = d.getHours();
       var minute = d.getMinutes();
-      var second = d.getSeconds();
-      var currentTimestamp = addZero(hour) + ":" + addZero(minute) + ":" + addZero(second);
+      //var second = d.getSeconds();
+      var currentTimestamp = addZero(hour) + ":" + addZero(minute);// + ":" + addZero(second);
       this.currentTime = currentTimestamp;
     },
 
@@ -315,7 +325,7 @@ export default {
           }else{
             this.player.playingDisplayMode = 0;
           }
-          this.player.playingInModeFor = 20;
+          this.player.playingInModeFor = 2;
         }
       }
 
