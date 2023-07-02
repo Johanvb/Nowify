@@ -43,12 +43,13 @@
   }
 
   &__progress_vinyl {
-    width: 100%;
+    //width: 100%;
    // border: 1px solid red;
     position: absolute;
     left: 24%;
     z-index: 1;
     opacity: 0.85;
+    
   }
 
   &__progresstext {
@@ -96,7 +97,7 @@
 
   &__vinyl {
     height: 100%; 
-    width: 100;
+    width: 100%;
     z-index:1;
     //border: 1px green solid;
     overflow: hidden;
